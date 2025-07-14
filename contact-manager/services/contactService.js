@@ -1,3 +1,6 @@
 const data = {}
-function loadFromJSON(){}
-function readFromData() {}
+
+function addContactToData(){}
+
+
+module.exports = {addContactToData,readFromData,loadFromJSON};

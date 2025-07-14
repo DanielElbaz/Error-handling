@@ -1,6 +1,12 @@
-commands = ["add", "delete", "list", "search", "help"];
 
-function HandleAddCommand() {}
+
+function HandleAddCommand([name,email,phone]) 
+{
+    // add validation for email and phone
+    console.log(name,email,phone)
+    //check if the contact already in the data
+    // add the
+}
 
 function HandleDeleteCommand() {}
 
