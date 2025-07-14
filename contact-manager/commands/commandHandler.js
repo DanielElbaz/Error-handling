@@ -1,6 +1,9 @@
-commands = ["add", "delete", "list", "search", "help"];
 
-function HandleAddCommand() {}
+
+function HandleAddCommand([name,email,phone]) 
+{
+    console.log(name,email,phone)
+}
 
 function HandleDeleteCommand() {}
 
