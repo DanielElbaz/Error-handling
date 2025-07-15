@@ -13,7 +13,7 @@ describe('Validation email tests:', () => {
     it("shouldn't be an empty email", () => {
         expect(() => validationTest.checkEmail('').toThrow("Invalid email"));
     });
-    
+
 
 });
 
@@ -28,7 +28,30 @@ describe('Validation phone tests:', () => {
         expect(() => validationTest.checkPhone('abc-def-ghij').toThrow("Ivalid Phone"));
     });
     it("shouldn't be an empty phone", () => {
-        expect(()=>validationTest.checkPhone('').toThrow("Invalid phone"))
+        expect(() => validationTest.checkPhone('').toThrow("Invalid phone"))
+    });
+});
+
+describe('checkEmailinData tests: ', () => {
+    const data = [
+        { email: 'user@example.com' },
+
+    ];
+
+    it('should return true if email exists', () => {
+        expect(validationTest.checkEmailinData(data, 'user@example.com')).toBe(true);
+    });
+
+    it('should return true even if casing is different', () => {
+        expect(validationTest.checkEmailinData(data, 'USER@example.com')).toBe(true);
+    });
+
+    it('should return false if email does not exist', () => {
+        expect(validationTest.checkEmailinData(data, 'new@email.com')).toBe(false);
+    });
+
+    it('should return false if data is empty', () => {
+        expect(validationTest.checkEmailinData([], 'user@example.com')).toBe(false);
     });
 });
 

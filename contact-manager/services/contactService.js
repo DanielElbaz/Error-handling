@@ -16,7 +16,7 @@ function addContactToData(sname, emails, phones) {
   validation.checkDuplicateInput(data, emails);
   data.push({ name: sname, email: emails, phone: phones });
   fileUtils.saveToJSON(data);
-  console.log(`The contact ${sname} add sucssfully to data !`);
+  console.log(`The contact ${sname} add successfully to data !`);
 }
 
 function deleteContactFromData(email) {
