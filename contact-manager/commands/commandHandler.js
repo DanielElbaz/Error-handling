@@ -20,6 +20,11 @@ function displaydata(data) {
   });
   return;
 }
+
+function dataExists(data) {
+  return data.length === 0;
+}
+
 function HandleAddCommand([name, email, phone]) {
   validation.checkPhone(phone);
   validation.checkEmail(email);
@@ -34,7 +39,7 @@ function HandleDeleteCommand(email) {
 function HandleListCommand() {
   const data = Service.getAllContacts();
   console.log("\n=== All Contacts ===\n");
-  if(!data){
+  if(dataExists(data)){
     console.log("There is no contacts")
   }
   displaydata(data);
@@ -42,9 +47,9 @@ function HandleListCommand() {
 
 function HandleSearchCommand(name) {
   const data = Service.searchByName(name);
-  console.log(`\n=== Search Results for ===${name}\n`);
-  if (!data) {
-  console.log(`No contacts found matching ${name}`);  
+  console.log(`\n=== Search Results for ${name} ===`);
+  if (dataExists(data)) {
+  console.log(`No contacts found matching ${name} `);  
   }
   displaydata(data);
 }

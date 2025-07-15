@@ -17,7 +17,7 @@ function findFromJSONByName(name) {
 function deleteFromJSON(email) {
   const data = loadFromJSON();
   const updatedData = data.filter((item) => item.email !== email);
-  fs.writeFileSync(filePath, JSON.stringify(updatedData, null, 2));
+  saveToJSON(updatedData);
 }
 
 function saveToJSON(data) {
