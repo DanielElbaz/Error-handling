@@ -18,10 +18,18 @@ function checkEmail(email) {
     return
 }
 
+function checkDuplicateInput(data,email){
+    if (data.find((contact)=>{contact.email.toLowerCase() == email.toLowerCase()})){
+        throw "Sorry this email already exist !"
+    }
+    return;
+}
+
 
 
 
 module.exports = {
     checkEmail,
-    checkPhone
+    checkPhone,
+    checkDuplicateInput
 }

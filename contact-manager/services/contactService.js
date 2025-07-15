@@ -1,15 +1,22 @@
-let mypath = __dirname;
+const path = require("path");
 
-const Utilspath = mypath.replace("\\services", "\\utils\\fileUtils.js");
+// Base directory (e.g., /project/contact-manager/services or /commands)
+const baseDir = __dirname;
 
-const fileUtils = require(Utilspath);
+// Build absolute paths to modules
+const utilsPath = path.resolve(baseDir, "../utils/fileUtils.js");
+const validationPath = path.resolve(baseDir, "../utils/validation.js");
+
+// Require the modules
+const fileUtils = require(utilsPath);
+const validation = require(validationPath);
 
 function addContactToData(sname, emails, phones) {
-  //check if there is duplicate inputs
-
   const data = fileUtils.loadFromJSON();
+  validation.checkDuplicateInput(data, emails)
   data.push({ name: sname, email: emails, phone: phones });
   fileUtils.saveToJSON(data);
+  console.log(`The contact ${sname} add sucssfully to data !`)
 }
 
 function deleteContactFromData(email) {

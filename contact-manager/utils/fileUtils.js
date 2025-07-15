@@ -2,9 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const filePath = path.join(__dirname, "..", "data");
 
-function getName(name){
-    return name.split(' ')[0];
-}
+
 function loadFromJSON() {
   if (!fs.existsSync(filePath)) return [];
   console.log("load from JSON file");
@@ -17,10 +15,11 @@ function findFromJSON(email) {
   console.log("Read from JSON file");
   return data.find((item) => item.email === email);
 }
+
 function findFromJSONByName(name) {
   const data = loadFromJSON();
   console.log("Read from JSON file");
-  return [data.find((item) => getName(item.name) === name)];
+  return data.filter(contact => contact.name === name);
 }
 function deleteFromJSON(email) {
   const data = loadFromJSON();
