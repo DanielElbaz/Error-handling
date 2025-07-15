@@ -29,7 +29,7 @@ function executeCommand() {
         break;
       // ... more cases
       default:
-        console.log("Sorry your commend is not exist");
+        console.log("Sorry your command does not exist");
     }
   } catch (err) {
     console.log(err);
