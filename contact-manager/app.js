@@ -4,28 +4,37 @@ function getCommand(info) {
   return info[0];
 }
 function getAddInput(info) {
-  return [info[1], info[2], info[3]];
+  try {
+    return [info[1], info[2], info[3]];
+  } catch {
+    throw "you did not give me the right input try help command";
+  }
+}
+function getOneInput(info){
+   try {
+    return info[1]
+  } catch {
+    throw "you did not give me the right input try help command";
+  }
 }
 
 function executeCommand() {
   try {
     switch (command) {
       case "add":
-        // code block to execute if expression matches value1
         handler.HandleAddCommand(getAddInput(info));
         break;
       case "delete":
-         handler.HandleDeleteCommand()
-        // code block to execute if expression matches value2
+        handler.HandleDeleteCommand(getOneInput(info));
         break;
       case "list":
-        handler.HandleListCommand()
+        handler.HandleListCommand();
         break;
       case "search":
-        handler.HandleSearchCommand()
+        handler.HandleSearchCommand(getOneInput(info));
         break;
       case "help":
-        handler.HandleHelpCommand()
+        handler.HandleHelpCommand();
         break;
       // ... more cases
       default:
