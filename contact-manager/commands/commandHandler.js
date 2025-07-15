@@ -12,6 +12,14 @@ console.log(validationPath);
 const validation = require(validationPath);
 const Service = require(servicePath);
 
+function displaydata(data) {
+  data.forEach((element, index) => {
+    console.log(
+      `${index + 1}. ${element.name} - ${element.email} - ${element.phone} `
+    );
+  });
+  return;
+}
 function HandleAddCommand([name, email, phone]) {
   validation.checkPhone(phone);
   validation.checkEmail(email);
@@ -23,18 +31,22 @@ function HandleDeleteCommand(email) {
   Service.deleteContactFromData(email);
 }
 
-function HandleListCommand() {}
+function HandleListCommand() {
+  const data = Service.getAllContacts();
+  console.log("\n=== All Contacts ===\n");
+  if(!data){
+    console.log("There is no contacts")
+  }
+  displaydata(data);
+}
 
 function HandleSearchCommand(name) {
   const data = Service.searchByName(name);
   console.log(`\n=== Search Results for ===${name}\n`);
-  if (data) {
-    data.forEach((element, index) => {
-      console.log(
-        `${index + 1}. ${element.name} - ${element.email} - ${element.phone} `
-      );
-    });
+  if (!data) {
+  console.log(`No contacts found matching ${name}`);  
   }
+  displaydata(data);
 }
 
 function HandleHelpCommand() {

@@ -13,13 +13,14 @@ const validation = require(validationPath);
 
 function addContactToData(sname, emails, phones) {
   const data = fileUtils.loadFromJSON();
-  validation.checkDuplicateInput(data, emails)
+  validation.checkDuplicateInput(data, emails);
   data.push({ name: sname, email: emails, phone: phones });
   fileUtils.saveToJSON(data);
-  console.log(`The contact ${sname} add sucssfully to data !`)
+  console.log(`The contact ${sname} add sucssfully to data !`);
 }
 
 function deleteContactFromData(email) {
+  validation.checkEmail(email);
   fileUtils.deleteFromJSON(email);
 }
 
@@ -27,4 +28,13 @@ function searchByName(name) {
   return fileUtils.findFromJSONByName(name);
 }
 
-module.exports = { addContactToData, deleteContactFromData, searchByName };
+function getAllContacts() {
+  return fileUtils.loadFromJSON();
+}
+
+module.exports = {
+  addContactToData,
+  deleteContactFromData,
+  searchByName,
+  getAllContacts,
+};

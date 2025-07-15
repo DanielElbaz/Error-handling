@@ -4,18 +4,10 @@ function getCommand(info) {
   return info[0];
 }
 function getAddInput(info) {
-  try {
-    return [info[1], info[2], info[3]];
-  } catch {
-    throw "you did not give me the right input try help command";
-  }
+  return [info[1], info[2], info[3]];
 }
-function getOneInput(info){
-   try {
-    return info[1]
-  } catch {
-    throw "you did not give me the right input try help command";
-  }
+function getOneInput(info) {
+  return info[1];
 }
 
 function executeCommand() {
@@ -36,7 +28,6 @@ function executeCommand() {
       case "help":
         handler.HandleHelpCommand();
         break;
-      // ... more cases
       default:
         console.log("Sorry your command does not exist");
     }
