@@ -1,21 +1,25 @@
-let mypath = __dirname;
+const path = require("path");
 
-const Servicepath = mypath.replace(
-  "\\commands",
-  "\\services\\contactService.js"
-);
+// Base directory (e.g., /project/contact-manager/commands)
+const baseDir = __dirname;
 
-const Service = require(Servicepath);
+// Build absolute paths using path.join()
+const servicePath = path.join(baseDir, "..", "services", "contactService.js");
+console.log(servicePath);
+const validationPath = path.join(baseDir, "..", "utils", "validation.js");
+console.log(validationPath);
+
+const validation = require(validationPath);
+const Service = require(servicePath);
 
 function HandleAddCommand([name, email, phone]) {
-  // add validation for email and phone
-  //check if the contact already in the data
-  // add the
+  validation.checkPhone(phone);
+  validation.checkEmail(email);
   Service.addContactToData(name, email, phone);
 }
 
 function HandleDeleteCommand(email) {
-  //check if the mail is valid
+  validation.checkEmail(email);
   Service.deleteContactFromData(email);
 }
 
@@ -23,12 +27,11 @@ function HandleListCommand() {}
 
 function HandleSearchCommand(name) {
   const data = Service.searchByName(name);
-  console.log(data);
-  console.log(`=== Search Results for ${name}`);
+  console.log(`\n=== Search Results for ===${name}\n`);
   if (data) {
     data.forEach((element, index) => {
       console.log(
-        `${index + 1} ${element.name} - ${element.email} - ${element.phone} `
+        `${index + 1}. ${element.name} - ${element.email} - ${element.phone} `
       );
     });
   }
