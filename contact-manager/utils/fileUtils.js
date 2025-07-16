@@ -14,6 +14,7 @@ function findFromJSONByName(name) {
   console.log("Read from JSON file");
   return data.filter((contact) => contact.name === name);
 }
+
 function deleteFromJSON(email) {
   const data = loadFromJSON();
   const updatedData = data.filter((contact) => contact.email !== email);

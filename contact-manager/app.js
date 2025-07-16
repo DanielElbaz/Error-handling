@@ -4,7 +4,7 @@ function getCommand(info) {
   return info[0];
 }
 function getAddInput(info) {
-  validation.existInput(info[1], info[2], info[3])
+  validation.existInput(info[1], info[2], info[3]);
   return [info[1], info[2], info[3]];
 }
 function getOneInput(info) {
