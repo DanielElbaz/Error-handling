@@ -1,12 +1,14 @@
 const handler = require("./commands/commandHandler.js");
-
+const validation = require("./utils/validation.js")
 function getCommand(info) {
   return info[0];
 }
 function getAddInput(info) {
+  validation.existInput(info[1], info[2], info[3])
   return [info[1], info[2], info[3]];
 }
 function getOneInput(info) {
+  validation.existInput(info[1]);
   return info[1];
 }
 

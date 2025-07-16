@@ -2,7 +2,7 @@
 
 const fileUtils = require("../utils/fileUtils");
 const validation = require("../utils/validation");
-const contactService = require("./contactService"); // assuming your function is exported
+const contactService = require("./contactService"); 
 
 jest.mock("../utils/fileUtils");
 jest.mock("../utils/validation");
@@ -41,7 +41,7 @@ describe("addContactToData", () => {
     ]);
 
     expect(consoleSpy).toHaveBeenCalledWith(
-      `The contact ${newName} add sucssfully to data !`
+      `The contact ${newName} add successfully to data !`
     );
 
     consoleSpy.mockRestore();
