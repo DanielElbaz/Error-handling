@@ -30,9 +30,17 @@ function checkEmailinData(data, email) {
     return (data.find(contact => contact.email.toLowerCase() == email.toLowerCase())) !== undefined;
 }
 
+function existInput(input1,input2 = NaN,input3 = NaN){
+    if(input1 === undefined || input2 === undefined || input2 === undefined){
+        throw "Please insert all the info I need ! (try help for know the right syntax)";
+    }
+    return;
+}
+
 module.exports = {
     checkEmail,
     checkPhone,
     checkDuplicateInput,
-    checkEmailinData
+    checkEmailinData,
+    existInput
 }

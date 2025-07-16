@@ -5,9 +5,7 @@ const baseDir = __dirname;
 
 // Build absolute paths using path.join()
 const servicePath = path.join(baseDir, "..", "services", "contactService.js");
-console.log(servicePath);
 const validationPath = path.join(baseDir, "..", "utils", "validation.js");
-console.log(validationPath);
 
 const validation = require(validationPath);
 const Service = require(servicePath);
@@ -18,10 +16,9 @@ function displaydata(data) {
       `${index + 1}. ${element.name} - ${element.email} - ${element.phone} `
     );
   });
-  return;
 }
 
-function dataExists(data) {
+function dataIsEmpty(data) {
   return data.length === 0;
 }
 
@@ -39,8 +36,8 @@ function HandleDeleteCommand(email) {
 function HandleListCommand() {
   const data = Service.getAllContacts();
   console.log("\n=== All Contacts ===\n");
-  if(dataExists(data)){
-    console.log("There is no contacts")
+  if (dataIsEmpty(data)) {
+    console.log("There is no contacts");
   }
   displaydata(data);
 }
@@ -48,14 +45,14 @@ function HandleListCommand() {
 function HandleSearchCommand(name) {
   const data = Service.searchByName(name);
   console.log(`\n=== Search Results for ${name} ===`);
-  if (dataExists(data)) {
-  console.log(`No contacts found matching ${name} `);  
+  if (dataIsEmpty(data)) {
+    console.log(`No contacts found matching ${name} `);
   }
   displaydata(data);
 }
 
 function HandleHelpCommand() {
-  console.log("Usage: node contacts.js [command] [arguments]");
+  console.log("Usage: node app.js [command] [arguments]");
   console.log("Commands:");
   console.log('  add "name" "email" "phone"  - Add a new contact');
   console.log("  list                        - List all contacts");
@@ -73,3 +70,5 @@ module.exports = {
   HandleSearchCommand,
   HandleHelpCommand,
 };
+//for testing only
+module.exports = { dataIsEmpty, displaydata, HandleHelpCommand };
