@@ -71,4 +71,4 @@ module.exports = {
   HandleHelpCommand,
 };
 //for testing only
-module.exports = { dataIsEmpty, displaydata, HandleHelpCommand };
+// module.exports = { dataIsEmpty, displaydata, HandleHelpCommand };

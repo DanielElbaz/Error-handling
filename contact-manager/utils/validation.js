@@ -31,7 +31,7 @@ function checkEmailinData(data, email) {
 }
 
 function existInput(input1,input2 = NaN,input3 = NaN){
-    if(input1 === undefined || input2 === undefined || input2 === undefined){
+    if(input1 === undefined || input2 === undefined || input3 === undefined){
         throw "Please insert all the info I need ! (try help for know the right syntax)";
     }
     return;

@@ -3,5 +3,10 @@
     "name": "Daniel",
     "email": "daniel@mail.com",
     "phone": "555-666-7777"
+  },
+  {
+    "name": "Yoav",
+    "email": "yoav@mail.com",
+    "phone": "052-654-3210"
   }
 ]
