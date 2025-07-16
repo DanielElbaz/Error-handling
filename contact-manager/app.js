@@ -4,6 +4,9 @@ function getCommand(info) {
   return info[0];
 }
 function getAddInput(info) {
+  if(info[1]==''){
+    throw "No input found"
+  }
   return [info[1], info[2], info[3]];
 }
 function getOneInput(info) {
